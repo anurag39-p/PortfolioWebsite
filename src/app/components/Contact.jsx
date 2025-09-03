@@ -8,13 +8,12 @@ export default function Contact({reference}) {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs
-      .sendForm(
-        "service_vryb7yi", // Replace
-        "template_yh13eil", // Replace
-        formRef.current,
-        "WexxrDjihv5IgOwqW" // Replace
-      )
+    emailjs.sendForm(
+  process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,   // ✅ Your Service ID
+  process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,  // ✅ Your Template ID
+  formRef.current,
+  process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY    // ✅ Your Public Key
+)
       .then(
         () => {
           alert("Message sent successfully!");
