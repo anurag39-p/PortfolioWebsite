@@ -1,12 +1,9 @@
 "use client";
 import React from "react";
 
-export default function About({ reference }) {
+export default function About() {
   return (
-    <section
-      id="about"
-      className="max-w-5xl mx-auto px-6 py-16 scroll-mt-20"
-    >
+    <div className="max-w-5xl mx-auto px-6 py-16">
       <h2 className="text-4xl font-bold text-center mb-8">About Me</h2>
 
       {/* Brief Intro */}
@@ -32,7 +29,7 @@ export default function About({ reference }) {
             <p className="text-sm text-gray-500 dark:text-gray-400">
               Bachelor of Technology in Electrical Engineering — 7.44 CGPA
             </p>
-            <p className="" >July 2019- June-2023</p>
+            <p>Aug 2019 – May 2023</p>
             <p className="mt-2">
               My college journey exposed me to a wide range of fields including electronics, electrical machines, IoT, embedded systems, and control systems. Over time, I developed a deep interest in coding and software development, complementing my core electrical engineering skills.
             </p>
@@ -75,6 +72,6 @@ export default function About({ reference }) {
           </li>
         </ul>
       </div>
-    </section>
+    </div>
   );
 }

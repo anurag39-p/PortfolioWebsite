@@ -1,44 +1,55 @@
 "use client";
 import { useRef } from "react";
 import Header from "@/app/components/Header";
-import Skills from "@/app/components/Skills";
-import Projects from "@/app/components/Projects";
-import Experience from "@/app/components/Experience";
-import Hero from "@/app/components/Hero"
+import Hero from "@/app/components/Hero";
 import About from "@/app/components/About";
-import Footer from "@/app/components/Footer"
-import Contact from "./components/Contact";
-
-
+import Projects from "@/app/components/Projects";
+import Skills from "@/app/components/Skills";
+import Experience from "@/app/components/Experience";
+import Contact from "@/app/components/Contact";
+import Footer from "@/app/components/Footer";
 
 export default function Page() {
-  const skillsRef = useRef(null);
+  const heroRef = useRef(null);
+  const aboutRef = useRef(null);
   const projectsRef = useRef(null);
+  const skillsRef = useRef(null);
   const experienceRef = useRef(null);
-  const aboutRef=useRef(null);
-  const heroRef=useRef(null);
-  const contactRef= useRef(null);
+  const contactRef = useRef(null);
 
   return (
     <>
       <Header
-        skillsRef={skillsRef}
-        projectsRef={projectsRef}
-        experienceRef={experienceRef}
-        aboutRef={aboutRef}
         heroRef={heroRef}
+        aboutRef={aboutRef}
+        projectsRef={projectsRef}
+        skillsRef={skillsRef}
+        experienceRef={experienceRef}
         contactRef={contactRef}
       />
-    
+
       <main>
-        <section ref={heroRef}><Hero /></section>
-        <section ref={aboutRef}><About /></section>
-        <section ref={projectsRef}><Projects /></section>
-        <section ref={skillsRef}><Skills /></section>
-        <section ref={experienceRef}><Experience /></section>
-        <section ref={contactRef}><Contact/></section>
+        <section id="home" ref={heroRef}>
+          <Hero />
+        </section>
+        <section id="about" ref={aboutRef} className="scroll-mt-24">
+          <About />
+        </section>
+        <section id="projects" ref={projectsRef} className="scroll-mt-24">
+          <Projects />
+        </section>
+        <section id="skills" ref={skillsRef} className="scroll-mt-24">
+          <Skills />
+        </section>
+        <section id="experience" ref={experienceRef} className="scroll-mt-24">
+          <Experience />
+        </section>
+        <section id="contact" ref={contactRef} className="scroll-mt-24">
+          <Contact />
+        </section>
       </main>
-      <Footer/>
+
+      <Footer />
     </>
   );
 }

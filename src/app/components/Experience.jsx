@@ -1,8 +1,8 @@
 "use client";
 
-export default function Experience({ reference }) {
+export default function Experience() {
   return (
-    <section ref={reference} className="py-16 bg-base-100 text-base-content">
+    <div className="py-16 bg-base-100 text-base-content">
       <div className="max-w-5xl mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12">Experience</h2>
 
@@ -57,6 +57,6 @@ export default function Experience({ reference }) {
           </ul>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

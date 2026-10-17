@@ -1,80 +1,91 @@
 "use client";
-import React, { useRef } from "react";
+import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 
-export default function Contact({reference}) {
-  const formRef = useRef();
+export default function Contact() {
+  const formRef = useRef(null);
+  const [status, setStatus] = useState({ type: "idle", message: "" });
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
+    setStatus({ type: "sending", message: "Sending..." });
 
-    emailjs.sendForm(
-  process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,   // ✅ Your Service ID
-  process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,  // ✅ Your Template ID
-  formRef.current,
-  process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY    // ✅ Your Public Key
-)
-      .then(
-        () => {
-          alert("Message sent successfully!");
-          formRef.current.reset();
-        },
-        (error) => {
-          console.error(error.text);
-          alert("Failed to send message. Try again later.");
-        }
+    try {
+      await emailjs.sendForm(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
       );
+      setStatus({ type: "success", message: "Message sent successfully!" });
+      formRef.current.reset();
+    } catch (error) {
+      console.error(error?.text || error);
+      setStatus({
+        type: "error",
+        message: "Failed to send message. Please try again later or email me directly.",
+      });
+    }
   };
 
+  const sending = status.type === "sending";
+
   return (
-    <section
-      id="contact"
-      className="min-h-screen flex flex-col items-center justify-center  px-4"
-    >
-      {/* Heading */}
-      <h2 className="text-5xl font-bold text-sky-900 mb-8">Contact Me</h2>
-<p>Please contact me directly at anuragpawar024@gmail.com or through this form.</p>
-      {/* Form */}
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-16">
+      <h2 className="text-5xl font-bold mb-8 text-center">Contact Me</h2>
+      <p className="mb-8 text-center">
+        Please contact me directly at{" "}
+        <a href="mailto:anuragpawar024@gmail.com" className="link link-primary">
+          anuragpawar024@gmail.com
+        </a>{" "}
+        or through this form.
+      </p>
+
       <form
         ref={formRef}
         onSubmit={sendEmail}
-        className="w-full max-w-lg p-8 rounded-xl shadow-lg border border-gray-200 "
+        className="w-full max-w-lg p-8 rounded-xl shadow-lg border border-base-300 bg-base-100"
       >
-        {/* Name */}
         <input
           type="text"
           name="user_name"
           placeholder="Name"
-          className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+          className="input input-bordered w-full mb-4"
           required
         />
-
-        {/* Email */}
         <input
           type="email"
           name="user_email"
           placeholder="Email"
-          className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+          className="input input-bordered w-full mb-4"
           required
         />
-
-        {/* Message */}
         <textarea
           name="message"
           placeholder="Message"
-          rows="5"
-          className="w-full p-3 mb-6 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+          rows={5}
+          className="textarea textarea-bordered w-full mb-6"
           required
-        ></textarea>
+        />
 
-        {/* Submit Button */}
-        <button
-          type="submit"
-          className="w-full py-3 bg-purple-600 text-white font-semibold rounded-lg shadow-md hover:bg-purple-700 transition transform hover:scale-105"
-        >
-          SUBMIT 
+        <button type="submit" disabled={sending} className="btn btn-primary w-full">
+          {sending ? "SENDING..." : "SUBMIT"}
         </button>
+
+        <p
+          role="status"
+          aria-live="polite"
+          className={`mt-4 text-center text-sm min-h-5 ${
+            status.type === "success"
+              ? "text-success"
+              : status.type === "error"
+              ? "text-error"
+              : ""
+          }`}
+        >
+          {status.type !== "sending" ? status.message : ""}
+        </p>
       </form>
-    </section>
+    </div>
   );
 }

@@ -2,13 +2,9 @@
 
 import { Code2, Layers, Wrench } from "lucide-react";
 
-export default function Skills({ reference }) {
+export default function Skills() {
   return (
-    <section
-      id="skills"
-      ref={reference}
-      className="py-20 bg-base-200 animate-fade-in min-h-[60vh] px-6"
-    >
+    <div className="py-20 bg-base-200 animate-fade-in min-h-[60vh] px-6">
       <h2 className="text-3xl font-bold mb-10 text-center">My Skills</h2>
       <div className="grid gap-8 md:grid-cols-3">
         <div className="p-6 bg-base-100 rounded-xl shadow hover:bg-base-300 transition">
@@ -46,6 +42,6 @@ export default function Skills({ reference }) {
           </ul>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

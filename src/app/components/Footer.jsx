@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 
@@ -20,7 +19,7 @@ export default function Footer() {
           <a href="https://www.instagram.com/anurag3_39/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition">
             <FaInstagram size={22} />
           </a>
-          <a href="https://leetcode.com/Anuragpawar/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition">
+          <a href="https://leetcode.com/u/Anuragpawar/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition">
             <Image
               src="/leetcode.png"
               alt="LeetCode"
@@ -31,15 +30,14 @@ export default function Footer() {
         </div>
 
         {/* Quick Links */}
-        <div className="flex justify-center space-x-4 text-sm mb-2">
-          <Link href="/" className="hover:underline">Home</Link>
-          <Link href="#projects" scroll={false} className="hover:underline">Projects</Link>
-          <Link href="#skills" scroll={false} className="hover:underline">Skills</Link>
-          <Link href="#experience" scroll={false} className="hover:underline">Experience</Link>
-          <Link href="#contact" scroll={false} className="hover:underline">Contact</Link>
+        <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm mb-2">
+          <a href="#home" className="hover:underline">Home</a>
+          <a href="#about" className="hover:underline">About</a>
+          <a href="#projects" className="hover:underline">Projects</a>
+          <a href="#skills" className="hover:underline">Skills</a>
+          <a href="#experience" className="hover:underline">Experience</a>
+          <a href="#contact" className="hover:underline">Contact</a>
         </div>
-
-       
 
         {/* Copyright */}
         <p className="text-xs text-gray-500 dark:text-gray-400">

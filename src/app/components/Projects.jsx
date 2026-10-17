@@ -2,40 +2,43 @@
 
 import { Github } from "lucide-react";
 
-export default function Projects({ reference }) {
+export default function Projects() {
   const projectList = [
     {
-      title: "Real Estate Price Prediction",
+      title: "Event-Driven E-Commerce Platform",
       description:
-        "Built a Bangalore-based real estate price prediction model using machine learning techniques such as linear regression and K-Fold cross-validation. The project involved extensive data cleaning with NumPy and Pandas, visualizing market trends using Matplotlib, and implementing predictive models with Scikit-Learn.",
-      tech: ["PYTHON", "NUMPY", "PANDAS", "MATPLOTLIB", "SCIKIT-LEARN"],
-      github: "https://github.com/anurag39-p/Predicting-Home-Prices-in-Banglore-",
-    },
-    {
-      title: "To-Do List App",
-      description:
-        "Full-stack task management app with React.js on the frontend and Express.js with MySQL on the backend. Users can add, edit, delete, and mark tasks as complete, with timestamps ensuring accurate tracking.",
-      tech: ["REACT", "EXPRESS", "MYSQL", "NODEJS"],
-      github: "https://github.com/anurag39-p/To-Do-App-using-React-and-Express",
+        "Dockerized microservices platform (User, Product, Order, Payment, Notification) with service-specific PostgreSQL and MongoDB stores. Orders are processed asynchronously with RabbitMQ and the Saga pattern, using the Transactional Outbox pattern, idempotent consumers, retries, and dead-letter queues for reliability. Secured with JWT role-based authorization and server-side price verification. Includes a React/Vite frontend with carts, checkout status polling, and order tracking.",
+      tech: [
+        "REACT",
+        "NODE.JS",
+        "EXPRESS",
+        "RABBITMQ",
+        "POSTGRESQL",
+        "MONGODB",
+        "DOCKER",
+        "JEST",
+      ],
+      github:
+        "https://github.com/anurag39-p/Event-driven-e-commerce-system-with-microservices",
     },
     {
       title: "Resume Screening App",
       description:
-        "Machine learning-powered resume classifier using TF-IDF and logistic regression to predict job categories. Built an interactive Streamlit app to display predictions, keyword analysis, and skills extraction.",
-      tech: ["PYTHON", "TF-IDF", "LOGISTIC REGRESSION", "STREAMLIT"],
+        "Machine learning-powered resume classifier using TF-IDF and logistic regression to predict job categories from raw resume text (PDF, DOCX, TXT). Includes text extraction, skill mining, fuzzy section detection (Experience, Education, Projects), and LSA-based summarization. The interactive Streamlit app shows the predicted job domain, top keywords, extracted skills, section summaries, and a word cloud.",
+      tech: ["PYTHON", "STREAMLIT", "SCIKIT-LEARN", "NLTK", "NLP", "TF-IDF"],
       github: "https://github.com/anurag39-p/Resume-Screening-App",
     },
     {
-      title: "Online Marketplace",
+      title: "Portfolio Website",
       description:
-        "E-commerce marketplace built with Django and SQLite3. Features include authentication, product listing management, and category-based browsing.",
-      tech: ["DJANGO", "SQLITE3", "HTML", "CSS"],
-      github: "https://github.com/anurag39-p/Online_Market_Place_django",
+        "This site: a responsive, single-page developer portfolio with light/dark theming, animated section navigation, and a working contact form that delivers messages straight to my inbox through EmailJS. Deployed on Vercel.",
+      tech: ["NEXT.JS", "REACT", "TAILWIND CSS", "DAISYUI", "EMAILJS"],
+      github: "https://github.com/anurag39-p/PortfolioWebsite",
     },
   ];
 
   return (
-    <section ref={reference} className="py-16 bg-base-100 text-base-content">
+    <div className="py-16 bg-base-100 text-base-content">
       <div className="max-w-5xl mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12">Projects</h2>
         <div className="grid gap-8">
@@ -72,6 +75,6 @@ export default function Projects({ reference }) {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }
